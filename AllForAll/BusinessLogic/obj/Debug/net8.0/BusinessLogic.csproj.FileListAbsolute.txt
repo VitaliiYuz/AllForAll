@@ -1,0 +1,16 @@
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\bin\Debug\net8.0\BusinessLogic.deps.json
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\bin\Debug\net8.0\BusinessLogic.dll
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\bin\Debug\net8.0\BusinessLogic.pdb
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\bin\Debug\net8.0\DataAccess.dll
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\bin\Debug\net8.0\DataAccess.pdb
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\obj\Debug\net8.0\BusinessLogic.csproj.AssemblyReference.cache
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\obj\Debug\net8.0\BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\obj\Debug\net8.0\BusinessLogic.AssemblyInfoInputs.cache
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\obj\Debug\net8.0\BusinessLogic.AssemblyInfo.cs
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\obj\Debug\net8.0\BusinessLogic.csproj.CoreCompileInputs.cache
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\obj\Debug\net8.0\BusinessLogic.sourcelink.json
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\obj\Debug\net8.0\BusinessLogic.csproj.CopyComplete
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\obj\Debug\net8.0\BusinessLogic.dll
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\obj\Debug\net8.0\refint\BusinessLogic.dll
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\obj\Debug\net8.0\BusinessLogic.pdb
+D:\Projects\AllForAll\AllForAll\AllForAll\BusinessLogic\obj\Debug\net8.0\ref\BusinessLogic.dll
