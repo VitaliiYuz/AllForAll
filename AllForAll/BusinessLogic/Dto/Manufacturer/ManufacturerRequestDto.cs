@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Dto.Category
+namespace BusinessLogic.Dto.Manufacturer
 {
-    public class CategoryRequestDto
+    public class ManufacturerRequestDto
     {
+     
         public string? Name { get; set; }
+
+        public string? Country { get; set; }
 
         public string? Desc { get; set; }
 
-        public string? CategoryPhotoLink { get; set; }
+        public string? ManufacturerPhotoLink { get; set; }
     }
 }

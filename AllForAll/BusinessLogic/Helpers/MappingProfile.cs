@@ -1,6 +1,8 @@
 ﻿using AllForAll.Dto.Product;
 using AllForAll.Models;
 using AutoMapper;
+using BusinessLogic.Dto.Category;
+using BusinessLogic.Dto.Manufacturer;
 
 namespace AllForAll.Helpers
 {
@@ -8,7 +10,9 @@ namespace AllForAll.Helpers
     {
         public MappingProfile() {
             CreateMap<ProductRequestDto, Product>();
-
+            CreateMap<CategoryRequestDto, Category>();
+            CreateMap<ManufacturerRequestDto, Manufacturer>();
+            //CreateMap<FeedbackRequestDto, Feedback>();
         }
 
         
