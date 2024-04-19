@@ -31,9 +31,12 @@ namespace BusinessLogic.Implementation
         public async Task DeleteProductAsync(int id, CancellationToken cancellation = default)
         {
             var productToDelete = await _dbContext.Products.FindAsync(id, cancellation);
-            _dbContext.Products.Remove(productToDelete);
-            await _dbContext.SaveChangesAsync(cancellation);
-
+            if (productToDelete != null)
+            {
+                _dbContext.Products.Remove(productToDelete);
+                await _dbContext.SaveChangesAsync(cancellation);
+            }
+            
         }
 
         public async Task<ICollection<Product>> GetAllProductsAsync(CancellationToken cancellation = default)

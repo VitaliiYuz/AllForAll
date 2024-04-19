@@ -1,7 +1,7 @@
 ﻿using AllForAll.Models;
 using BusinessLogic.Dto.Feedback;
 
-namespace AllForAll.Interfaces;
+namespace BusinessLogic.Interfaces;
 
 public interface IFeedbackService
 {

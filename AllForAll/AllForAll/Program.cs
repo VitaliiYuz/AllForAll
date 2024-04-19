@@ -1,5 +1,4 @@
-using AllForAll.Implementation;
-using AllForAll.Interfaces;
+
 using AllForAll.Models;
 using BusinessLogic.Dto;
 using BusinessLogic.Implementation;
@@ -12,6 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IFeedbackService, FeedbackService>();
+builder.Services.AddScoped<IManufacturerService, ManufacturerService>();
+builder.Services.AddScoped<IUserRoleService, UserRoleService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 //Cloudinary

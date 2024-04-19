@@ -1,4 +1,4 @@
-﻿namespace AllForAll.Dto.Product
+﻿namespace BusinessLogic.Dto.Product
 {
     public class ProductRequestDto
     {

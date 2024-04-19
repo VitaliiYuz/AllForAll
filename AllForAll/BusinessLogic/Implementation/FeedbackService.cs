@@ -31,8 +31,11 @@ public class FeedbackService : IFeedbackService
     public async Task DeleteFeedbackAsync(int id, CancellationToken cancellation = default)
     {
         var feedbackToDelete = await _dbContext.Feedbacks.FindAsync(id, cancellation);
-        _dbContext.Feedbacks.Remove(feedbackToDelete);
-        await _dbContext.SaveChangesAsync(cancellation);
+        if (feedbackToDelete != null)
+        {
+            _dbContext.Feedbacks.Remove(feedbackToDelete);
+            await _dbContext.SaveChangesAsync(cancellation);
+        }
     }
 
     public async Task<ICollection<Feedback>> GetAllFeedbacksAsync(CancellationToken cancellation = default)

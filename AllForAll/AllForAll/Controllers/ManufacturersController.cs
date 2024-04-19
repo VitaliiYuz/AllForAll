@@ -1,5 +1,4 @@
-﻿using AllForAll.Interfaces;
-using BusinessLogic.Dto.Manufacturer;
+﻿using BusinessLogic.Dto.Manufacturer;
 using BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading;

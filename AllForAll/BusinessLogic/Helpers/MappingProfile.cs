@@ -1,9 +1,10 @@
-﻿using AllForAll.Dto.Product;
+﻿
 using AllForAll.Models;
 using AutoMapper;
 using BusinessLogic.Dto.Category;
 using BusinessLogic.Dto.Feedback;
 using BusinessLogic.Dto.Manufacturer;
+using BusinessLogic.Dto.Product;
 using BusinessLogic.Dto.User;
 using BusinessLogic.Dto.UserRole;
 

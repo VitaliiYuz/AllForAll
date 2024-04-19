@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Interfaces
 {
-    internal interface ICategoryService
+    public interface ICategoryService
     {
         Task<ICollection<Category>> GetAllCategoriesAsync(CancellationToken cancellation = default);
         Task<Category> GetCategoryByIdAsync(int id, CancellationToken cancellation = default);
