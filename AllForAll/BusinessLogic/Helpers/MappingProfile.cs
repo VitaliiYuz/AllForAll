@@ -2,7 +2,10 @@
 using AllForAll.Models;
 using AutoMapper;
 using BusinessLogic.Dto.Category;
+using BusinessLogic.Dto.Feedback;
 using BusinessLogic.Dto.Manufacturer;
+using BusinessLogic.Dto.User;
+using BusinessLogic.Dto.UserRole;
 
 namespace AllForAll.Helpers
 {
@@ -12,7 +15,9 @@ namespace AllForAll.Helpers
             CreateMap<ProductRequestDto, Product>();
             CreateMap<CategoryRequestDto, Category>();
             CreateMap<ManufacturerRequestDto, Manufacturer>();
-            //CreateMap<FeedbackRequestDto, Feedback>();
+            CreateMap<UserRequestDto, User>();
+            CreateMap<UserRoleRequestDto, UserRole>();
+            CreateMap<FeedbackRequestDto, Feedback>();
         }
 
         
