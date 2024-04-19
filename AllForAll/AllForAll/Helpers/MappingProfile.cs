@@ -1,4 +1,5 @@
-﻿using AllForAll.Dto.Product;
+﻿using AllForAll.Dto.Feedback;
+using AllForAll.Dto.Product;
 using AllForAll.Models;
 using AutoMapper;
 
@@ -8,9 +9,7 @@ namespace AllForAll.Helpers
     {
         public MappingProfile() {
             CreateMap<ProductRequestDto, Product>();
-
+            CreateMap<FeedbackRequestDto, Feedback>();
         }
-
-        
     }
 }
