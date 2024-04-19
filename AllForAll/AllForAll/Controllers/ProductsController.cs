@@ -1,5 +1,6 @@
-﻿using AllForAll.Dto.Product;
-using AllForAll.Interfaces;
+﻿
+using BusinessLogic.Dto.Product;
+using BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 

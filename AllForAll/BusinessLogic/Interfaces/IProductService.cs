@@ -1,7 +1,7 @@
-﻿using AllForAll.Dto.Product;
-using AllForAll.Models;
+﻿using AllForAll.Models;
+using BusinessLogic.Dto.Product;
 
-namespace AllForAll.Interfaces
+namespace BusinessLogic.Interfaces
 {
     public interface IProductService
     {

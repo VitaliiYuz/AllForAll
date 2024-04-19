@@ -1,10 +1,11 @@
-﻿using AllForAll.Dto.Product;
-using AllForAll.Interfaces;
+﻿
 using AllForAll.Models;
 using AutoMapper;
+using BusinessLogic.Dto.Product;
+using BusinessLogic.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace AllForAll.Implementation
+namespace BusinessLogic.Implementation
 {
     public class ProductService : IProductService
     {

@@ -1,107 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿
+using BusinessLogic.Interfaces;
+using BusinessLogic.Dto.Category;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using AllForAll.Models;
+
 
 namespace AllForAll.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/categories")]
     public class CategoriesController : ControllerBase
     {
-        private readonly AllForAllDbContext _context;
+        private readonly ICategoryService _categoryService;
 
-        public CategoriesController(AllForAllDbContext context)
+        public CategoriesController(ICategoryService categoryService)
         {
-            _context = context;
+            _categoryService = categoryService;
         }
+       
 
-        // GET: api/Categories
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        public async Task<IActionResult> GetAllCategoriesAsync(CancellationToken cancellationToken)
         {
-            return await _context.Categories.ToListAsync();
+            var categories = await _categoryService.GetAllCategoriesAsync(cancellationToken);
+            return Ok(categories);
         }
 
-        // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(int id)
+        public async Task<IActionResult> GetCategoryByIdAsync([FromRoute] int id, CancellationToken cancellationToken)
         {
-            var category = await _context.Categories.FindAsync(id);
-
+            var category = await _categoryService.GetCategoryByIdAsync(id, cancellationToken);
             if (category == null)
             {
                 return NotFound();
             }
-
-            return category;
+            return Ok(category);
         }
 
-        // PUT: api/Categories/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
-        {
-            if (id != category.CategoryId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(category).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Categories
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<IActionResult> CreateCategoryAsync([FromBody] CategoryRequestDto category, CancellationToken cancellationToken)
         {
-            _context.Categories.Add(category);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCategory", new { id = category.CategoryId }, category);
+            var categoryId = await _categoryService.CreateCategoryAsync(category, cancellationToken);
+            return Ok(categoryId);
         }
 
-        // DELETE: api/Categories/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(int id)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCategoryAsync([FromRoute] int id, [FromBody] CategoryRequestDto category, CancellationToken cancellationToken)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
-
+            await _categoryService.UpdateCategoryAsync(id, category, cancellationToken);
             return NoContent();
         }
 
-        private bool CategoryExists(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCategoryAsync([FromRoute] int id, CancellationToken cancellationToken)
         {
-            return _context.Categories.Any(e => e.CategoryId == id);
+            await _categoryService.DeleteCategoryAsync(id, cancellationToken);
+            return NoContent();
         }
     }
 }

@@ -1,11 +1,10 @@
-﻿using AllForAll.Interfaces;
-using AllForAll.Models;
+﻿using AllForAll.Models;
 using AutoMapper;
 using BusinessLogic.Dto.Feedback;
 using BusinessLogic.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace AllForAll.Implementation;
+namespace BusinessLogic.Implementation;
 
 public class FeedbackService : IFeedbackService
 {
