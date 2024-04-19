@@ -36,16 +36,16 @@ namespace AllForAll.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUserRoleAsync([FromBody] UserRoleRequestDto userRole, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateUserRoleAsync([FromBody] UserRoleRequestDto userRoleDto, CancellationToken cancellationToken)
         {
-            var userRoleId = await _userRoleService.CreateUserRoleAsync(userRole, cancellationToken);
+            var userRoleId = await _userRoleService.CreateUserRoleAsync(userRoleDto, cancellationToken);
             return Ok(userRoleId);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUserRoleAsync([FromRoute] int id, [FromBody] UserRoleRequestDto userRole, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateUserRoleAsync([FromRoute] int id, [FromBody] UserRoleRequestDto userRoleDto, CancellationToken cancellationToken)
         {
-            await _userRoleService.UpdateUserRoleAsync(id, userRole, cancellationToken);
+            await _userRoleService.UpdateUserRoleAsync(id, userRoleDto, cancellationToken);
             return NoContent();
         }
 

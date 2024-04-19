@@ -43,17 +43,17 @@ namespace AllForAll.Controllers
         // POST: api/Feedback
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<IActionResult> PostFeedback([FromBody] FeedbackRequestDto feedback, CancellationToken cancellationToken)
+        public async Task<IActionResult> PostFeedback([FromBody] FeedbackRequestDto feedbackDto, CancellationToken cancellationToken)
         {
-            var feedbackId = await _feedbackService.CreateFeedbackAsync(feedback, cancellationToken);
+            var feedbackId = await _feedbackService.CreateFeedbackAsync(feedbackDto, cancellationToken);
             return Ok(feedbackId);
         }
 
         // PUT: api/Feedback
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFeedback([FromRoute] int id, [FromBody] FeedbackRequestDto feedback, CancellationToken cancellation = default)
+        public async Task<IActionResult> PutFeedback([FromRoute] int id, [FromBody] FeedbackRequestDto feedbackDto, CancellationToken cancellation = default)
         {
-            await _feedbackService.UpdateFeedbackAsync(id, feedback, cancellation);
+            await _feedbackService.UpdateFeedbackAsync(id, feedbackDto, cancellation);
             return NoContent();
         }
 
