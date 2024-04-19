@@ -1,6 +1,9 @@
 using AllForAll.Implementation;
 using AllForAll.Interfaces;
 using AllForAll.Models;
+using BusinessLogic.Dto;
+using BusinessLogic.Implementation;
+using BusinessLogic.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
