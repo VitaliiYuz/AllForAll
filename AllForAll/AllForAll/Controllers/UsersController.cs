@@ -34,7 +34,7 @@ namespace AllForAll.Controllers
         }
 
         #region Get user`s param
-        [HttpGet("{id}")]
+        [HttpGet("GetUserByIdAsync/{id}")]
         public async Task<IActionResult> GetUserByIdAsync([FromRoute] int id, CancellationToken cancellationToken)
         {
             var user = await _userService.GetUserByIdAsync(id, cancellationToken);
@@ -46,7 +46,7 @@ namespace AllForAll.Controllers
         }
 
         //Get user`s UserRole
-        [HttpGet("{id}")]
+        [HttpGet("GetUserRole/{id}")]
         public async Task<IActionResult> GetUserRole([FromBody] int id, CancellationToken cancellationToken)
         {
             var user = await _userService.GetUserByIdAsync(id, cancellationToken);
@@ -59,7 +59,7 @@ namespace AllForAll.Controllers
         }
         
         //Get user`s username
-        [HttpGet("{id}")]
+        [HttpGet("GetUsername/{id}")]
         public async Task<IActionResult> GetUsername([FromBody] int id, CancellationToken cancellationToken)
         {
             var user = await _userService.GetUserByIdAsync(id, cancellationToken);
@@ -71,7 +71,7 @@ namespace AllForAll.Controllers
         }
         
         //Get user`s email
-        [HttpGet("{id}")]
+        [HttpGet("GetEmail/{id}")]
         public async Task<IActionResult> GetEmail([FromBody] int id, CancellationToken cancellationToken)
         {
             var user = await _userService.GetUserByIdAsync(id, cancellationToken);
@@ -83,7 +83,7 @@ namespace AllForAll.Controllers
         }
         
         //Get user`s Is Google account
-        [HttpGet("{id}")]
+        [HttpGet("GetIsGoogleAcc/{id}")]
         public async Task<IActionResult> GetIsGoogleAcc([FromBody] int id, CancellationToken cancellationToken)
         {
             var user = await _userService.GetUserByIdAsync(id, cancellationToken);
@@ -95,7 +95,7 @@ namespace AllForAll.Controllers
         }
         
         //Get user`s feedbacks
-        [HttpGet("{id}")]
+        [HttpGet("GetUserFeedbacks/{id}")]
         public async Task<IActionResult> GetUserFeedbacks([FromBody] int id, CancellationToken cancellationToken)
         {
             var user = await _userService.GetUserByIdAsync(id, cancellationToken);
@@ -131,27 +131,33 @@ namespace AllForAll.Controllers
         }
 
         #region Update user`s param
-        [HttpPut("{id}")]
+        [HttpPut("UpdateUserAsync/{id}")]
         public async Task<IActionResult> UpdateUserAsync([FromRoute] int id, [FromBody] UserRequestDto user, CancellationToken cancellationToken)
         {
             await _userService.UpdateUserAsync(id, user, cancellationToken);
             return NoContent();
         }
-        
+
         //Update user`s role
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUserRoleAsync([FromBody] int id, [FromBody] UserRole userRole,
+        [HttpPut("UpdateUserRoleAsync/{id}")]
+        public async Task<IActionResult> UpdateUserRoleAsync([FromRoute] int id, [FromBody] UserRole userRole,
             CancellationToken cancellationToken)
         {
             var user = await _userService.GetUserByIdAsync(id, cancellationToken);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
             user.UserRole = userRole;
             await _userService.UpdateUserAsync(user, cancellationToken);
             return NoContent();
         }
-        
+
+
         //Update user`s email
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUserEmailAsync([FromBody] int id, [FromBody] string email,
+        [HttpPut("UpdateUserEmailAsync/{id}")]
+        public async Task<IActionResult> UpdateUserEmailAsync([FromBody] int id, string email,
             CancellationToken cancellationToken)
         {
             var user = await _userService.GetUserByIdAsync(id, cancellationToken);
@@ -161,8 +167,8 @@ namespace AllForAll.Controllers
         }
         
         //Update username
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUsernameAsync([FromBody] int id, [FromBody] string username,
+        [HttpPut("UpdateUsernameAsync/{id}")]
+        public async Task<IActionResult> UpdateUsernameAsync([FromBody] int id, string username,
             CancellationToken cancellationToken)
         {
             var user = await _userService.GetUserByIdAsync(id, cancellationToken);
@@ -172,8 +178,8 @@ namespace AllForAll.Controllers
         }
         
         //Update user`s is google account
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateIsGoogleAccAsync([FromBody] int id, [FromBody] string isGoogleAcc,
+        [HttpPut("UpdateIsGoogleAccAsync/{id}")]
+        public async Task<IActionResult> UpdateIsGoogleAccAsync([FromBody] int id, string isGoogleAcc,
             CancellationToken cancellationToken)
         {
             var user = await _userService.GetUserByIdAsync(id, cancellationToken);
