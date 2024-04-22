@@ -8257,19 +8257,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Користувач\\.nuget\\packages\\": {}
+    "C:\\Users\\wipot\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Pract2\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "D:\\Projects\\AllForAll\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "D:\\Pract2\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj",
-      "packagesPath": "C:\\Users\\Користувач\\.nuget\\packages\\",
-      "outputPath": "D:\\Pract2\\AllForAll\\AllForAll\\DataAccess\\obj\\",
+      "projectPath": "D:\\Projects\\AllForAll\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj",
+      "packagesPath": "C:\\Users\\wipot\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\AllForAll\\AllForAll\\AllForAll\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Користувач\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\wipot\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8289,11 +8294,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -8345,7 +8345,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

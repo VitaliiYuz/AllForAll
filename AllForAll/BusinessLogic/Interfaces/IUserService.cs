@@ -18,6 +18,7 @@ namespace BusinessLogic.Interfaces
         Task<int> CreateUserAsync(UserRequestDto user, CancellationToken cancellation = default);
 
         Task UpdateUserAsync(int id, UserRequestDto user, CancellationToken cancellation = default);
+        Task UpdateUserAsync(User user, CancellationToken cancellation = default);
 
         Task DeleteUserAsync(int id, CancellationToken cancellation = default);
 

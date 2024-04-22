@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using BusinessLogic.Dto.UserRole;
 
 namespace BusinessLogic.Implementation
 {
@@ -64,6 +65,11 @@ namespace BusinessLogic.Implementation
                 _dbContext.Update(userToUpdate);
                 await _dbContext.SaveChangesAsync(cancellation);
             }
+        }
+        public async Task UpdateUserAsync(User user, CancellationToken cancellation = default)
+        {
+            _dbContext.Update(user);
+            await _dbContext.SaveChangesAsync(cancellation);
         }
     }
 }
