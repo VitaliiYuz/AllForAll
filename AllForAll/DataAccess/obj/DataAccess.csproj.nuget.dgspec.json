@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\AllForAll\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj": {}
+    "C:\\Users\\Roman\\Documents\\GitHub\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\AllForAll\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\Roman\\Documents\\GitHub\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\AllForAll\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Roman\\Documents\\GitHub\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "D:\\Projects\\AllForAll\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\wipot\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\AllForAll\\AllForAll\\AllForAll\\DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\Roman\\Documents\\GitHub\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\Roman\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Roman\\Documents\\GitHub\\AllForAll\\AllForAll\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\wipot\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Roman\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -89,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

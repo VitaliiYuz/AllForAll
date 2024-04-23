@@ -17,8 +17,10 @@ namespace AllForAll.Helpers
             CreateMap<CategoryRequestDto, Category>();
             CreateMap<ManufacturerRequestDto, Manufacturer>();
             CreateMap<UserRequestDto, User>();
+            CreateMap<UserLoginRequestDto, User>();
             CreateMap<UserRoleRequestDto, UserRole>();
             CreateMap<FeedbackRequestDto, Feedback>();
+            
         }
 
         

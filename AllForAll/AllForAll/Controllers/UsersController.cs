@@ -108,7 +108,7 @@ namespace AllForAll.Controllers
         #endregion
 
         [HttpPost]
-        public async Task<IActionResult> CreateUserAsync([FromBody] UserRequestDto userDto, [FromForm] IFormFile file, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateUserAsync([FromForm] UserRequestDto userDto, IFormFile file, CancellationToken cancellationToken)
         {
             if (file != null && file.Length > 0)
             {
@@ -221,5 +221,20 @@ namespace AllForAll.Controllers
             return Ok("Photo uploaded successfully");
         }
 
+        [HttpPost("LoginUser")]
+        public async Task<IActionResult> LoginAsync([FromForm] UserLoginRequestDto user)
+        {
+            var token = await _userService.LoginAsync(user);
+            return Ok(token);
+        }
+
+        [HttpPost("CheckToken")]
+        public async Task<IActionResult> CheckToken(string token)
+        {
+            string authorizationHeader = Request.Headers["Authorization"];
+
+            var user = await _userService.CheckToken(token);
+            return Ok(user);
+        }
     }
 }

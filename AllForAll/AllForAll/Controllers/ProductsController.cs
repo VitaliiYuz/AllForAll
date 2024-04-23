@@ -2,6 +2,7 @@
 using BusinessLogic.Dto.Product;
 using BusinessLogic.Implementation;
 using BusinessLogic.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 
@@ -19,8 +20,8 @@ namespace AllForAll.Controllers
             _productService = productService;
         }
 
-       
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAllProductsAsync (CancellationToken cancellationToken)
         {
