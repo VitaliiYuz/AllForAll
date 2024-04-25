@@ -70,6 +70,10 @@ namespace AllForAll.Controllers
         public async Task<IActionResult> UpdateCategoryAsync([FromRoute] int id, [FromBody] CategoryRequestDto categoryDto, CancellationToken cancellationToken)
         {
             await _categoryService.UpdateCategoryAsync(id, categoryDto, cancellationToken);
+
+            //TODO: Пропоную звернути увагу на ці матеріали та додатковий варіант відповіді методу PUT
+            //https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT
+
             return NoContent();
         }
 

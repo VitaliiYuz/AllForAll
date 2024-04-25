@@ -1,4 +1,4 @@
-
+﻿
 using AllForAll.Helpers;
 using AllForAll.Models;
 using BusinessLogic.Dto;
@@ -103,5 +103,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//TODO: альтернативний підхід до роутінга. Він не вимагає застосування атрибуту [Route("api/[controller]")] для кожного контролера
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Main}/{action=Index}/{id?}");
 
 app.Run();

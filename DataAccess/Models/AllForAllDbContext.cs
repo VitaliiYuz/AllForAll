@@ -27,10 +27,13 @@ public partial class AllForAllDbContext : DbContext
 
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
+    //TODO: зберігати параметри підключення до бази даних в коді - погана практика. Потрібно перенести в конфігураційний/конфігураційні файли
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 /*#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.*/
         => optionsBuilder.UseSqlServer("Server=tcp:allforallserver.database.windows.net,1433;Initial Catalog=AllForAllDB;Persist Security Info=False;User ID=allforalluser;Password= 0llf0r*ll ;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
+
+    //TODO: конфігурацію класів краще перенести з цього одного метода в окремі файли. Додатково: https://www.learnentityframeworkcore.com/configuration/fluent-api#separate-configuration-classes
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Category>(entity =>
