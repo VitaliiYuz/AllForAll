@@ -21,5 +21,7 @@ namespace BusinessLogic.Interfaces
         Task UpdateCategoryAsync(int id, CategoryRequestDto category, CancellationToken cancellation = default);
 
         Task DeleteCategoryAsync(int id, CancellationToken cancellation = default);
+
+        Task<List<Category>> GetPopularCategoriesAsync(CancellationToken cancellationToken);
     }
 }

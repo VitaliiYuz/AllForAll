@@ -99,6 +99,12 @@ namespace AllForAll.Controllers
 
             return Ok("Manufacturer photo uploaded successfully");
         }
+        [HttpGet("popular")]
+        public async Task<IActionResult> GetPopularManufacturers(CancellationToken cancellationToken)
+        {
+            var popularManufacturers = await _manufacturerService.GetPopularManufacturersAsync(cancellationToken);
+            return Ok(popularManufacturers);
+        }
 
     }
 }

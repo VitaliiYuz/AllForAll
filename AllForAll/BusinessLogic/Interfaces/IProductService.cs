@@ -16,6 +16,8 @@ namespace BusinessLogic.Interfaces
 
         Task DeleteProductAsync(int id, CancellationToken cancellation = default);
 
+        Task<List<Product>> GetPopularProductsAsync(CancellationToken cancellationToken);
+
 
     }
 }

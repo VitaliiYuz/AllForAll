@@ -1,0 +1,37 @@
+<div class="popular-categories">
+    <h2>Popular Categories</h2>
+    <ul>
+      <li *ngFor="let category of popularCategories">
+        <figure>
+          <img [src]="category.categoryPhotoLink" alt="Category Image" width="150" height="150">
+          <figcaption>{{ category.name }}</figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="popular-manufacturers">
+    <h2>Popular Manufacturers</h2>
+    <ul>
+      <li *ngFor="let manufacturer of popularManufacturers">
+        <figure>
+          <img [src]="manufacturer.manufacturerPhotoLink" alt="Manufacturer Image" width="150" height="150">
+          <figcaption>{{ manufacturer.name }}</figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="popular-products">
+    <h2>Popular Products</h2>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let product of popularProducts">
+        <figure>
+          <img [src]="product.productPhotoLink" alt="Product Image" width="150" height="150">
+          <figcaption>{{ product.name }}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+  
+  

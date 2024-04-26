@@ -65,5 +65,21 @@ namespace BusinessLogic.Implementation
                 await _dbContext.SaveChangesAsync(cancellation);
             }
         }
+
+        public async Task<List<Category>> GetPopularCategoriesAsync(CancellationToken cancellationToken)
+        {
+            var popularCategories = await _dbContext.Categories
+                .Select(c => new
+                {
+                    Category = c,
+                    FeedbackCount = c.Products.Sum(p => p.Feedbacks.Count)
+                })
+                .OrderByDescending(x => x.FeedbackCount)
+                .Take(5)
+                .Select(x => x.Category)
+                .ToListAsync(cancellationToken);
+
+            return popularCategories;
+        }
     }
 }

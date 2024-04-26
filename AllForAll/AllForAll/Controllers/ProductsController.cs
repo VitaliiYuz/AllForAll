@@ -106,6 +106,12 @@ namespace AllForAll.Controllers
             return Ok("Product photo uploaded successfully");
         }
 
+        [HttpGet("popular")]
+        public async Task<IActionResult> GetPopularProducts(CancellationToken cancellationToken)
+        {
+            var popularProducts = await _productService.GetPopularProductsAsync(cancellationToken);
+            return Ok(popularProducts);
+        }
 
 
     }

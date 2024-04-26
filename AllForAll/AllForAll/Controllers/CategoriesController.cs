@@ -3,6 +3,8 @@ using BusinessLogic.Interfaces;
 using BusinessLogic.Dto.Category;
 using Microsoft.AspNetCore.Mvc;
 using BusinessLogic.Implementation;
+using AllForAll.Models;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace AllForAll.Controllers
@@ -105,6 +107,13 @@ namespace AllForAll.Controllers
 
             return Ok("Category photo uploaded successfully");
         }
+        [HttpGet("popular")]
+        public async Task<IActionResult> GetPopularCategories(CancellationToken cancellationToken)
+        {
+            var popularCategories = await _categoryService.GetPopularCategoriesAsync(cancellationToken);
+            return Ok(popularCategories);
+        }
+
 
     }
 }
