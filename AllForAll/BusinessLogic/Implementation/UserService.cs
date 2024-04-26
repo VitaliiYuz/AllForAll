@@ -15,6 +15,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Newtonsoft.Json;
+using System.Security.Cryptography;
 
 namespace BusinessLogic.Implementation
 {
@@ -32,9 +34,24 @@ namespace BusinessLogic.Implementation
 
         }
 
+        private string ComputeObjectHash<T>(T obj)
+        {
+            var json = JsonConvert.SerializeObject(obj);
+
+            using (var sha256 = SHA256.Create())
+            {
+                var bytes = Encoding.UTF8.GetBytes(json);
+                var hashBytes = sha256.ComputeHash(bytes);
+
+                return Convert.ToBase64String(hashBytes);
+            }
+        }
+
         public async Task<int> CreateUserAsync(UserRequestDto user, CancellationToken cancellation = default)
         {
             var mappedUser = _mapper.Map<User>(user);
+            var passwordHash = ComputeObjectHash<string>(mappedUser.Password);
+            mappedUser.Password = passwordHash;
             var createdUser = await _dbContext.Users.AddAsync(mappedUser, cancellation);
             await _dbContext.SaveChangesAsync(cancellation);
             return createdUser.Entity.UserId;
@@ -105,10 +122,12 @@ namespace BusinessLogic.Implementation
         public async Task<string> LoginAsync(UserLoginRequestDto model)
         {
             string user = null;
+            var passwordHash = ComputeObjectHash<string>(model.Password);
             var existinguser = await _dbContext.Users
-                .Where(a => a.Password == model.Password && a.Email == model.Email)
+                .Where(a => a.Password == passwordHash && a.Email == model.Email)
                 .Include(a => a.UserRole)
                 .FirstOrDefaultAsync();
+
             if (existinguser != null)
             {
                 user = await CreateTokenAsync(existinguser);
