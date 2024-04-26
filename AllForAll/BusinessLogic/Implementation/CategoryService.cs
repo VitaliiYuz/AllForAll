@@ -65,5 +65,17 @@ namespace BusinessLogic.Implementation
                 await _dbContext.SaveChangesAsync(cancellation);
             }
         }
+
+        public async Task UpdateCategoryPhotoLinkAsync(int id, string categoryPhotoLink, CancellationToken cancellationToken = default)
+        {
+            var categoryToUpdate = await _dbContext.Categories.FirstOrDefaultAsync(c => c.CategoryId == id, cancellationToken);
+            if (categoryToUpdate != null)
+            {
+                categoryToUpdate.CategoryPhotoLink = categoryPhotoLink;
+                _dbContext.Update(categoryToUpdate);
+                await _dbContext.SaveChangesAsync(cancellationToken);
+            }
+        }
+
     }
 }

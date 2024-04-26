@@ -79,7 +79,9 @@ namespace AllForAll.Controllers
             await _categoryService.DeleteCategoryAsync(id, cancellationToken);
             return NoContent();
         }
+
         [HttpPost("upload-photo/{categoryId}")]
+        //для свагера треба забрати  FromForm
         public async Task<IActionResult> UploadCategoryPhoto(int categoryId, [FromForm] IFormFile file)
         {
             if (file == null || file.Length <= 0)
@@ -101,10 +103,11 @@ namespace AllForAll.Controllers
 
             category.CategoryPhotoLink = uploadResult.SecureUrl.AbsoluteUri;
 
-            await _categoryService.UpdateCategoryAsync(categoryId, new CategoryRequestDto { CategoryPhotoLink = category.CategoryPhotoLink });
+            await _categoryService.UpdateCategoryPhotoLinkAsync(categoryId, category.CategoryPhotoLink);
 
             return Ok("Category photo uploaded successfully");
         }
+
 
     }
 }

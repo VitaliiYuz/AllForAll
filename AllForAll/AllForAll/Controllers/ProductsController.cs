@@ -81,12 +81,14 @@ namespace AllForAll.Controllers
         }
 
         [HttpPost("upload-photo/{productId}")]
+        //для свагера треба забрати  FromForm
         public async Task<IActionResult> UploadProductPhoto(int productId, [FromForm] IFormFile file)
         {
             if (file == null || file.Length <= 0)
             {
                 return BadRequest("File is empty");
             }
+
             var product = await _productService.GetProductByIdAsync(productId);
             if (product == null)
             {
@@ -101,10 +103,11 @@ namespace AllForAll.Controllers
 
             product.ProductPhotoLink = uploadResult.SecureUrl.AbsoluteUri;
 
-            await _productService.UpdateProductAsync(productId, new ProductRequestDto { ProductPhotoLink = product.ProductPhotoLink });
+            await _productService.UpdateProductPhotoLinkAsync(productId, product.ProductPhotoLink);
 
             return Ok("Product photo uploaded successfully");
         }
+
 
 
 

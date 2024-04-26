@@ -15,6 +15,8 @@ namespace BusinessLogic.Interfaces
 
         Task UpdateManufacturerAsync(int id, ManufacturerRequestDto manufacturer, CancellationToken cancellation = default);
 
+        Task UpdateManufacturerPhotoLinkAsync(int id, string manufacturerPhotoLink, CancellationToken cancellationToken = default);
+
         Task DeleteManufacturerAsync(int id, CancellationToken cancellation = default);
     }
 }

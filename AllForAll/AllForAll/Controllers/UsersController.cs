@@ -108,17 +108,9 @@ namespace AllForAll.Controllers
         #endregion
 
         [HttpPost]
-        public async Task<IActionResult> CreateUserAsync([FromForm] UserRequestDto userDto, IFormFile file, CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateUserAsync([FromForm] UserRequestDto userDto,CancellationToken cancellationToken)
         {
-            if (file != null && file.Length > 0)
-            {
-                var uploadResult = await _photoService.AddPhotoAsync(file);
-                if (uploadResult.Error != null)
-                {
-                    return BadRequest("Failed to upload photo");
-                }
-                userDto.UserPhotoLink = uploadResult.SecureUrl.AbsoluteUri;
-            }
+          
 
             var userId = await _userService.CreateUserAsync(userDto, cancellationToken);
 
@@ -196,12 +188,14 @@ namespace AllForAll.Controllers
             return NoContent();
         }
         [HttpPost("upload-photo/{userId}")]
-        public async Task<IActionResult> UploadPhoto(int userId, [FromForm] IFormFile file)
+        //для свагера треба забрати  FromForm
+        public async Task<IActionResult> UploadPhoto([FromForm] IFormFile file, int userId)
         {
             if (file == null || file.Length <= 0)
             {
                 return BadRequest("File is empty");
             }
+
             var user = await _userService.GetUserByIdAsync(userId);
             if (user == null)
             {
@@ -216,7 +210,7 @@ namespace AllForAll.Controllers
 
             user.UserPhotoLink = uploadResult.SecureUrl.AbsoluteUri;
 
-            await _userService.UpdateUserAsync(userId, new UserRequestDto { UserPhotoLink = user.UserPhotoLink });
+            await _userService.UpdateUserPhotoLinkAsync(userId, user.UserPhotoLink);
 
             return Ok("Photo uploaded successfully");
         }

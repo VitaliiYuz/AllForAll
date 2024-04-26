@@ -16,6 +16,10 @@ namespace BusinessLogic.Interfaces
 
         Task DeleteProductAsync(int id, CancellationToken cancellation = default);
 
+        Task UpdateProductPhotoLinkAsync(int id, string productPhotoLink, CancellationToken cancellationToken = default);
+
+
+
 
     }
 }

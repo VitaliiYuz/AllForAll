@@ -20,6 +20,8 @@ namespace BusinessLogic.Interfaces
 
         Task UpdateCategoryAsync(int id, CategoryRequestDto category, CancellationToken cancellation = default);
 
+        Task UpdateCategoryPhotoLinkAsync(int id, string categoryPhotoLink, CancellationToken cancellationToken = default);
+
         Task DeleteCategoryAsync(int id, CancellationToken cancellation = default);
     }
 }

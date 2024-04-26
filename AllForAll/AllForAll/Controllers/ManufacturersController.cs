@@ -75,12 +75,14 @@ namespace AllForAll.Controllers
             return NoContent();
         }
         [HttpPost("upload-photo/{manufacturerId}")]
+        //для свагера треба забрати  FromForm
         public async Task<IActionResult> UploadManufacturerPhoto(int manufacturerId, [FromForm] IFormFile file)
         {
             if (file == null || file.Length <= 0)
             {
                 return BadRequest("File is empty");
             }
+
             var manufacturer = await _manufacturerService.GetManufacturerByIdAsync(manufacturerId);
             if (manufacturer == null)
             {
@@ -95,10 +97,11 @@ namespace AllForAll.Controllers
 
             manufacturer.ManufacturerPhotoLink = uploadResult.SecureUrl.AbsoluteUri;
 
-            await _manufacturerService.UpdateManufacturerAsync(manufacturerId, new ManufacturerRequestDto { ManufacturerPhotoLink = manufacturer.ManufacturerPhotoLink });
+            await _manufacturerService.UpdateManufacturerPhotoLinkAsync(manufacturerId, manufacturer.ManufacturerPhotoLink);
 
             return Ok("Manufacturer photo uploaded successfully");
         }
+
 
     }
 }

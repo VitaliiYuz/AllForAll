@@ -65,5 +65,16 @@ namespace BusinessLogic.Implementation
                 await _dbContext.SaveChangesAsync(cancellation);
             }
         }
+        public async Task UpdateManufacturerPhotoLinkAsync(int id, string manufacturerPhotoLink, CancellationToken cancellationToken = default)
+        {
+            var manufacturerToUpdate = await _dbContext.Manufacturers.FirstOrDefaultAsync(m => m.ManufacturerId == id, cancellationToken);
+            if (manufacturerToUpdate != null)
+            {
+                manufacturerToUpdate.ManufacturerPhotoLink = manufacturerPhotoLink;
+                _dbContext.Update(manufacturerToUpdate);
+                await _dbContext.SaveChangesAsync(cancellationToken);
+            }
+        }
+
     }
 }

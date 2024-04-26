@@ -92,6 +92,17 @@ namespace BusinessLogic.Implementation
                 await _dbContext.SaveChangesAsync(cancellation);
             }
         }
+        public async Task UpdateUserPhotoLinkAsync(int id, string userPhotoLink, CancellationToken cancellationToken = default)
+        {
+            var userToUpdate = await _dbContext.Users.FirstOrDefaultAsync(u => u.UserId == id, cancellationToken);
+            if (userToUpdate != null)
+            {
+                userToUpdate.UserPhotoLink = userPhotoLink;
+                _dbContext.Update(userToUpdate);
+                await _dbContext.SaveChangesAsync(cancellationToken);
+            }
+        }
+
         public async Task UpdateUserAsync(User user, CancellationToken cancellation = default)
         {
             _dbContext.Update(user);
