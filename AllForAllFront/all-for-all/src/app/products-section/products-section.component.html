@@ -1,0 +1,81 @@
+<div class="products-section">
+    <h1 style="margin-bottom: 40px;">{{ section }}</h1>
+    <div class="row">
+        <div class="col-md-3">
+        <div class="sidebar">
+            <h5>Manufacturers</h5>
+            <ul class="list-group">
+            <li class="list-group-item" *ngFor="let manufacturer of manufacturers">
+                <input type="checkbox" [id]="'manufacturer' + manufacturer.id" [value]="manufacturer.name">
+                <label [for]="'manufacturer' + manufacturer.id">{{ manufacturer.name }}</label>
+            </li>
+            </ul>
+            <h5>Countries</h5>
+            <ul class="list-group">
+            <li class="list-group-item" *ngFor="let country of countries">
+                <input type="checkbox" [id]="'country' + country.id" [value]="country.name">
+                <label [for]="'country' + country.id">{{ country.name }}</label>
+            </li>
+            </ul>
+            <h5>Verification</h5>
+            <ul class="list-group">
+            <li class="list-group-item">
+                <input type="checkbox" id="verification" value="Is Verified">
+                <label for="verification">Is Verified</label>
+            </li>
+            </ul>
+        </div>
+        </div>
+        <div class="col-md-9">
+            <div class="pagination-container">
+                <!-- Paginated list -->
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let item of paginatedItems">
+                        <div class="card mb-3">
+                            <img [src]="item.photoUrl" class="card-img-top" alt="product photo">
+                            <div class="card-body">
+                                <!-- Item title with verification icon -->
+                                <h5 class="card-title">
+                                    {{ item.title }} 
+                                    <span class="fas fa-check-circle text-success"></span>
+                                </h5>
+                                <!-- Manufacturer -->
+                                <p class="card-text">{{ item.manufacturer }}</p>
+                                <!-- Star rating -->
+                                <div class="card-title">
+                                    <div class="ratingComments">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                    </div>
+                                    <span class="far fa-comment-alt"></span>
+                                </div>
+                                <!-- Comment icon -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pagination links -->
+                <nav aria-label="Page navigation" id="productPageNav">
+                    <ul class="pagination justify-content-center">
+                        <!-- Previous page link -->
+                        <li class="page-item" [class.disabled]="currentPage === 1">
+                            <a class="page-link" (click)="onPageChange(currentPage - 1)" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                        <!-- Page numbers -->
+                        <!-- <li class="page-item" *ngFor="let pageNumber of [1, 2, 3]">
+                            <a class="page-link" (click)="onPageChange(pageNumber)">{{ pageNumber }}</a>
+                        </li> -->
+                        <!-- Next page link -->
+                        <li class="page-item" [class.disabled]="currentPage === 2">
+                            <a class="page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>                     
+        </div>
+    </div>
+</div>
+  
