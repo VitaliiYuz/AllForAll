@@ -86,6 +86,18 @@ builder.Services.AddSwaggerGen(opt =>
     });
 });
 
+builder.Services.AddCors(c => {
+    c.AddPolicy("AllowOrigin", builder =>
+    {
+        builder
+            .WithOrigins("*") // or specify your allowed origins
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithExposedHeaders("Content-Disposition")
+            .SetIsOriginAllowed(origin => true); // SetIsOriginAllowed can be customized based on your needs
+    });
+});
+
 builder.Services.AddDbContext<AllForAllDbContext>();
 
 var app = builder.Build();
@@ -98,7 +110,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowOrigin"); 
 app.UseAuthentication();
 app.UseAuthorization();
 

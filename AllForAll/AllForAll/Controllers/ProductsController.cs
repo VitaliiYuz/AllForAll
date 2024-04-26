@@ -21,7 +21,7 @@ namespace AllForAll.Controllers
         }
 
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAllProductsAsync (CancellationToken cancellationToken)
         {
