@@ -49,12 +49,20 @@ namespace BusinessLogic.Implementation
 
         public async Task<int> CreateUserAsync(UserRequestDto user, CancellationToken cancellation = default)
         {
-            var mappedUser = _mapper.Map<User>(user);
-            var passwordHash = ComputeObjectHash<string>(mappedUser.Password);
-            mappedUser.Password = passwordHash;
-            var createdUser = await _dbContext.Users.AddAsync(mappedUser, cancellation);
-            await _dbContext.SaveChangesAsync(cancellation);
-            return createdUser.Entity.UserId;
+            var email_check = await _dbContext.Users.FirstOrDefaultAsync(a => a.Email == user.Email);
+            if (email_check != null)
+            {
+                return 0;
+            }
+            else
+            {
+                var mappedUser = _mapper.Map<User>(user);
+                var passwordHash = ComputeObjectHash<string>(mappedUser.Password);
+                mappedUser.Password = passwordHash;
+                var createdUser = await _dbContext.Users.AddAsync(mappedUser, cancellation);
+                await _dbContext.SaveChangesAsync(cancellation);
+                return createdUser.Entity.UserId;
+            }
         }
 
         public async Task DeleteUserAsync(int id, CancellationToken cancellation = default)
