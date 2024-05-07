@@ -1,0 +1,21 @@
+.product {
+    padding: 60px;
+}
+
+#userImg {
+    width: 30px;
+    height: 30px;
+}
+
+.card {
+    padding: 20px;
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user {
+    display: flex;
+}

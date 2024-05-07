@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './authorization/signup/signup.component';
 import { LoginComponent } from './authorization/login/login.component';
 import { ProductsSectionComponent } from './products-section/products-section.component';
+import { HomeComponent } from './home/home.component';
+import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/signup", pathMatch: "full" },
@@ -13,10 +15,23 @@ const routes: Routes = [
     path: "login", component: LoginComponent
   },
   {
-    path: "categories/:id", component: ProductsSectionComponent
+    path: "home", component: HomeComponent
   },
   {
-    path: "manufacturers/:id", component: ProductsSectionComponent
+    path: "categories/:categoryId",
+    component: ProductsSectionComponent,
+  },
+  {
+    path: "countries/:countryId",
+    component: ProductsSectionComponent,
+  },
+  {
+    path: "manufacturers/:manufacturerId",
+    component: ProductsSectionComponent,
+  },
+  {
+    path: "products/:productId",
+    component: ProductComponent,
   },
 ];
 

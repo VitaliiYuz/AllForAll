@@ -72,7 +72,7 @@ namespace BusinessLogic.Implementation
                 .Select(c => new
                 {
                     Category = c,
-                    FeedbackCount = c.Products.Sum(p => p.Feedbacks.Count)
+                    FeedbackCount = c.Products.SelectMany(p => p.Feedbacks).Count()
                 })
                 .OrderByDescending(x => x.FeedbackCount)
                 .Take(5)

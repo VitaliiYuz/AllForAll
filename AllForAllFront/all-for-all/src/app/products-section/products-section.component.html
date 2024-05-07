@@ -30,7 +30,7 @@
             <div class="pagination-container">
                 <!-- Paginated list -->
                 <div class="row">
-                    <div class="col-md-4" *ngFor="let item of paginatedItems">
+                    <div class="col-md-4" *ngFor="let item of paginatedItems" [routerLink]="['/products', item.id]">
                         <div class="card mb-3">
                             <img [src]="item.photoUrl" class="card-img-top" alt="product photo">
                             <div class="card-body">
