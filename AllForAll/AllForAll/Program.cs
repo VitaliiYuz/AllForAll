@@ -40,7 +40,7 @@ builder.Services.AddResponseCompression(options =>
 {
     options.Providers.Add<BrotliCompressionProvider>(); //  підтримка Brotli
     options.Providers.Add<GzipCompressionProvider>(); //  підтримка  Gzip
-    options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "image/svg+xml" }); // підтримка MIME-типів
+    options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "image/svg+xml", "image/png" }); // підтримка MIME-типів
 });
 builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
 {
