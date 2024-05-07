@@ -6,9 +6,11 @@ using BusinessLogic.Helpers;
 using BusinessLogic.Implementation;
 using BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.IO.Compression;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +29,28 @@ builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 //Cloudinary
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 builder.Services.AddScoped<IPhotoService, PhotoService>();
+
+//cache
+
+builder.Services.AddMemoryCache();
+
+//Compresion
+// Додайте підтримку компресії відповіді
+builder.Services.AddResponseCompression(options =>
+{
+    options.Providers.Add<BrotliCompressionProvider>(); //  підтримка Brotli
+    options.Providers.Add<GzipCompressionProvider>(); //  підтримка  Gzip
+    options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "image/svg+xml" }); // підтримка MIME-типів
+});
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Optimal; 
+});
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Optimal; 
+});
+
 //JWT Token
 builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("JWT"));
 
@@ -108,6 +132,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseResponseCompression();
 
 app.UseHttpsRedirection();
 app.UseCors("AllowOrigin"); 

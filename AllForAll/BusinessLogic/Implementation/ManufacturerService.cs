@@ -3,6 +3,7 @@ using AutoMapper;
 using BusinessLogic.Dto.Manufacturer;
 using BusinessLogic.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,14 @@ namespace BusinessLogic.Implementation
     {
         private readonly AllForAllDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly IMemoryCache _cache;
 
-        public ManufacturerService(AllForAllDbContext dbContext, IMapper mapper)
+        public ManufacturerService(AllForAllDbContext dbContext, IMapper mapper, IMemoryCache cache)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _cache = cache;
         }
-
         public async Task<int> CreateManufacturerAsync(ManufacturerRequestDto manufacturer, CancellationToken cancellation = default)
         {
             var mappedManufacturer = _mapper.Map<Manufacturer>(manufacturer);
@@ -67,7 +69,12 @@ namespace BusinessLogic.Implementation
         }
         public async Task<List<Manufacturer>> GetPopularManufacturersAsync(CancellationToken cancellationToken)
         {
-            var popularManufacturers = await _dbContext.Manufacturers
+            if (_cache.TryGetValue("PopularManufacturers", out List<Manufacturer> popularManufacturers))
+            {
+                return popularManufacturers;
+            }
+
+            popularManufacturers = await _dbContext.Manufacturers
                 .Select(m => new
                 {
                     Manufacturer = m,
@@ -77,6 +84,8 @@ namespace BusinessLogic.Implementation
                 .Take(5)
                 .Select(x => x.Manufacturer)
                 .ToListAsync(cancellationToken);
+
+            _cache.Set("PopularManufacturers", popularManufacturers, TimeSpan.FromMinutes(10));
 
             return popularManufacturers;
         }

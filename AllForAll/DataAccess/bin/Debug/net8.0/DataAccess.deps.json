@@ -12,6 +12,7 @@
           "Microsoft.EntityFrameworkCore.Design": "8.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.4",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.4",
+          "Microsoft.Extensions.Caching.Memory": "8.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.2",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
@@ -1098,22 +1099,22 @@
           "runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-arm",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "5.1.1.0"
           },
           "runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "5.1.1.0"
           },
           "runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "5.1.1.0"
           },
           "runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "0.0.0.0"
+            "fileVersion": "5.1.1.0"
           }
         }
       },

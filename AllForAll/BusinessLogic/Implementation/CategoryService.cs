@@ -3,6 +3,7 @@ using AutoMapper;
 using BusinessLogic.Dto.Category;
 using BusinessLogic.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,13 @@ namespace BusinessLogic.Implementation
     {
         private readonly AllForAllDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly IMemoryCache _cache;
 
-        public CategoryService(AllForAllDbContext dbContext, IMapper mapper)
+        public CategoryService(AllForAllDbContext dbContext, IMapper mapper, IMemoryCache cache)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _cache = cache;
         }
 
         public async Task<int> CreateCategoryAsync(CategoryRequestDto category, CancellationToken cancellation = default)
@@ -68,7 +71,12 @@ namespace BusinessLogic.Implementation
 
         public async Task<List<Category>> GetPopularCategoriesAsync(CancellationToken cancellationToken)
         {
-            var popularCategories = await _dbContext.Categories
+            if (_cache.TryGetValue("PopularCategories", out List<Category> popularCategories))
+            {
+                return popularCategories;
+            }
+
+            popularCategories = await _dbContext.Categories
                 .Select(c => new
                 {
                     Category = c,
@@ -78,6 +86,8 @@ namespace BusinessLogic.Implementation
                 .Take(5)
                 .Select(x => x.Category)
                 .ToListAsync(cancellationToken);
+
+            _cache.Set("PopularCategories", popularCategories, TimeSpan.FromMinutes(10));
 
             return popularCategories;
         }

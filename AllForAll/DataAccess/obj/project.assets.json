@@ -8252,29 +8252,32 @@
       "Microsoft.EntityFrameworkCore.Design >= 8.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.4",
+      "Microsoft.Extensions.Caching.Memory >= 8.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.2",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
   "packageFolders": {
-    "/Users/annasuslova/.nuget/packages/": {}
+    "C:\\Users\\Користувач\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/annasuslova/Desktop/AllForAll/AllForAll/AllForAll/DataAccess/DataAccess.csproj",
+      "projectUniqueName": "D:\\Pract2\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "/Users/annasuslova/Desktop/AllForAll/AllForAll/AllForAll/DataAccess/DataAccess.csproj",
-      "packagesPath": "/Users/annasuslova/.nuget/packages/",
-      "outputPath": "/Users/annasuslova/Desktop/AllForAll/AllForAll/AllForAll/DataAccess/obj/",
+      "projectPath": "D:\\Pract2\\AllForAll\\AllForAll\\DataAccess\\DataAccess.csproj",
+      "packagesPath": "C:\\Users\\Користувач\\.nuget\\packages\\",
+      "outputPath": "D:\\Pract2\\AllForAll\\AllForAll\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/annasuslova/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Користувач\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8318,6 +8321,10 @@
             "target": "Package",
             "version": "[8.0.4, )"
           },
+          "Microsoft.Extensions.Caching.Memory": {
+            "target": "Package",
+            "version": "[8.0.0, )"
+          },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[8.0.2, )"
@@ -8343,7 +8350,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

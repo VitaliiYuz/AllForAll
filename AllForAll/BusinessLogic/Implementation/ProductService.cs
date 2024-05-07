@@ -4,6 +4,7 @@ using AutoMapper;
 using BusinessLogic.Dto.Product;
 using BusinessLogic.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace BusinessLogic.Implementation
 {
@@ -11,11 +12,15 @@ namespace BusinessLogic.Implementation
     {
         private readonly AllForAllDbContext _dbContext;
         private readonly IMapper _mapper;
-        public ProductService(AllForAllDbContext dbContext, IMapper mapper) { 
+        private readonly IMemoryCache _cache; // Додайте це поле
+
+        public ProductService(AllForAllDbContext dbContext, IMapper mapper, IMemoryCache cache) // Додайте IMemoryCache в конструктор
+        {
             _dbContext = dbContext;
             _mapper = mapper;
+            _cache = cache; // Ініціалізуйте _cache
         }
-        
+
 
         public async Task<int> CreateProductAsync(ProductRequestDto product, CancellationToken cancellation = default)
         {
@@ -67,7 +72,12 @@ namespace BusinessLogic.Implementation
         }
         public async Task<List<Product>> GetPopularProductsAsync(CancellationToken cancellationToken)
         {
-            var popularProducts = await _dbContext.Products
+            if (_cache.TryGetValue("PopularProducts", out List<Product> popularProducts))
+            {
+                return popularProducts;
+            }
+
+            popularProducts = await _dbContext.Products
                 .Select(p => new
                 {
                     Product = p,
@@ -77,6 +87,8 @@ namespace BusinessLogic.Implementation
                 .Take(5)
                 .Select(x => x.Product)
                 .ToListAsync(cancellationToken);
+
+            _cache.Set("PopularProducts", popularProducts, TimeSpan.FromMinutes(10));
 
             return popularProducts;
         }
