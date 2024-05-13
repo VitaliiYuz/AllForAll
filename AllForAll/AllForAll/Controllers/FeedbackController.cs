@@ -1,13 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AllForAll.Dto.Feedback;
-using AllForAll.Interfaces;
+﻿
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AllForAll.Models;
+using BusinessLogic.Dto.Feedback;
+using BusinessLogic.Interfaces;
 
 namespace AllForAll.Controllers
 {
@@ -41,24 +39,24 @@ namespace AllForAll.Controllers
             }
             return Ok(feedback);
         }
-        
+
         // POST: api/Feedback
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<IActionResult> PostFeedback([FromBody] FeedbackRequestDto feedback , CancellationToken cancellationToken)
+        public async Task<IActionResult> PostFeedback([FromBody] FeedbackRequestDto feedbackDto, CancellationToken cancellationToken)
         {
-            var feedbackId = await _feedbackService.CreateFeedbackAsync(feedback, cancellationToken); 
+            var feedbackId = await _feedbackService.CreateFeedbackAsync(feedbackDto, cancellationToken);
             return Ok(feedbackId);
         }
-        
+
         // PUT: api/Feedback
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFeedback([FromRoute]int id, [FromBody]FeedbackRequestDto feedback, CancellationToken cancellation = default)
+        public async Task<IActionResult> PutFeedback([FromRoute] int id, [FromBody] FeedbackRequestDto feedbackDto, CancellationToken cancellation = default)
         {
-            await _feedbackService.UpdateFeedbackAsync(id, feedback, cancellation);
+            await _feedbackService.UpdateFeedbackAsync(id, feedbackDto, cancellation);
             return NoContent();
         }
-        
+
         // DELETE: api/Feedback/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFeedback([FromRoute] int id, CancellationToken cancellation = default)
@@ -66,6 +64,6 @@ namespace AllForAll.Controllers
             await _feedbackService.DeleteFeedbackAsync(id, cancellation);
             return NoContent();
         }
-        
+
     }
 }
